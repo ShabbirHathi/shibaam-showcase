@@ -27,6 +27,9 @@ import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// Get base path from environment variable or use default for GitHub Pages
+const basePath = import.meta.env.VITE_BASE_PATH || "/shibaam-showcase/";
+
 // Layout wrapper for public pages
 const PublicLayout = ({ children }: { children: React.ReactNode }) => (
   <>
@@ -44,7 +47,7 @@ const App = () => (
           <OrderProvider>
             <Toaster />
             <Sonner />
-            <BrowserRouter>
+            <BrowserRouter basename={basePath}>
               <Routes>
                 {/* Public Routes */}
                 <Route path="/" element={<PublicLayout><Home /></PublicLayout>} />
